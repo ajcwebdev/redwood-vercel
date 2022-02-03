@@ -45,3 +45,27 @@ This example used the [`yarn rw setup deploy vercel`](https://redwoodjs.com/docs
 ```
 
 After running the setup command, the [`apiUrl`](https://redwoodjs.com/docs/app-configuration-redwood-toml#web) is changed from `/.redwood/functions` to `/api`.
+
+### Test Deployed API
+
+Test the endpoint with `curl`:
+
+```bash
+curl \
+  --request POST \
+  --header 'content-type: application/json' \
+  --url 'https://redwood-vercel.vercel.app/api/graphql' \
+  --data '{"query":"{ redwood { version } }"}'
+```
+
+This will return the following output:
+
+```json
+{
+  "data":{
+    "redwood":{
+      "version":"0.43.0"
+    }
+  }
+}
+```
